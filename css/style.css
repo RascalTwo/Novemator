@@ -1,0 +1,44 @@
+/******************************************
+/* HOT GARBAGE - PLEASE DON'T MIMIC THIS CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+h1, h2{
+  text-align: center;
+}
+body {
+  width: max-content;
+  margin: auto;
+}
+
+#calculator {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+button:last-of-type {
+  grid-column: 3 / 3;
+}
+
+#result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -45%);
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
