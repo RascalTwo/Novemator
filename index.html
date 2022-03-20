@@ -8,27 +8,65 @@
 		<title>Not So Great Calculator</title>
 
 		<!-- external CSS link -->
+		<link href="http://fonts.cdnfonts.com/css/seven-segment" rel="stylesheet">
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+		<script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
 	</head>
 	<body>
-		<h1>Not So Great Calculator</h1>
-		<div id="calculator">
-			<button>+1</button>
-			<button>+1</button>
-			<button>+1</button>
-			<button>+1</button>
-			<button>+1</button>
-			<button>+1</button>
-			<button>+1</button>
-			<button>+1</button>
-			<button>+1</button>
-			<button>0</button>
-			<div id="result">0</div>
-			<button>Shuffle</button>
-		</div>
+		<header>
+			<h1>Novemator</h1>
+			<p id="hint">
+				A new top-of-the-line security keypad has been developed to keep out anyone without sufficient mathematical skills, with daily reshuffling they're perfect!
+				<br/>
+				You find nine of these, will you be able to enter any today?
+			</p>
+		</header>
+		<main>
+			<div id="display">
+				<div id="current">CHOOSE</div>
+				<div id="target">DIFFICULTY</div>
+			</div>
+			<div id="difficulty" class="three-by-three">
+				<button>1</button>
+				<button>2</button>
+				<button>3</button>
+				<button>4</button>
+				<button>5</button>
+				<button>6</button>
+				<button>7</button>
+				<button>8</button>
+				<button>9</button>
+			</div>
+			<div id="keypad" class="three-by-three hidden">
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button><span>+</span><span>1</span></button>
+				<button>CLR</button>
+				<div>
+				</div>
+				<button>SHUF</button>
+			</div>
+		</main>
+		<div id="mocha"></div>
 
 
 		<script type="text/javascript" src="js/main.js"></script>
+		<!--<script class="mocha-init">
+      //mocha.setup('bdd');
+      //mocha.checkLeaks();
+    </script>
+    <script src="js/test.js"></script>
+    <script class="mocha-exec">
+      //mocha.run();
+    </script>-->
 	</body>
 </html>

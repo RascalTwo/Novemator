@@ -1,44 +1,148 @@
-/******************************************
-/* HOT GARBAGE - PLEASE DON'T MIMIC THIS CSS
-/*******************************************/
+@font-face {
+  font-family: "DSEG7 Classic Mini";
+  src: url(../fonts-DSEG_v046/DSEG7-Classic-MINI/DSEG7ClassicMini-Regular.woff);
+}
+@font-face {
+  font-family: "DSEG14 Classic Mini";
+  src: url(../fonts-DSEG_v046/DSEG14-Classic-MINI/DSEG14ClassicMini-Regular.woff);
+}
 
-/* Box Model Hack */
-*{
+
+:root {
+  --color: black;
+}
+
+html {
   box-sizing: border-box;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(hsla(0, 0%, 0%, 0.4), hsla(0, 0%, 0%, 0.2));
+  font-size: 62.5%;
 }
 
-/******************************************
-/* LAYOUT
-/*******************************************/
-h1, h2{
-  text-align: center;
+*, *::before, *::after {
+  box-sizing: inherit;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: white;
+  }
+  html {
+    background-image: radial-gradient(hsla(0, 0%, 0%, 0.9), hsla(0, 0%, 0%, 0.8));
+  }
+}
+
 body {
-  width: max-content;
+  color: var(--color);
+}
+
+main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   margin: auto;
 }
 
-#calculator {
+.three-by-three {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1ch;
+  padding: 2ch;
+  border-radius: 0 0 1ch 1ch;
+  background: hsl(198, 94%, 14%);
+  justify-items: center;
 }
 
-button:last-of-type {
+.three-by-three button {
+  z-index: 0;
+  color: lime;
+  font-family: 'DSEG7 Classic Mini', 'Seven Segment', sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 5rem;
+  border: 0;
+  cursor: pointer;
+  border-radius: .5rem;
+  background-color: hsl(0, 0%, 30%);
+  border-bottom: 7.5px solid hsl(0, 0%, 15%);
+  width: 4ch;
+}
+
+.three-by-three button:not(:disabled):is(:hover, :focus) {
+  margin-top: 2.5px;
+  margin-bottom: -2.5px;
+  border-bottom: 5px solid hsl(0, 0%, 10%);
+}
+.three-by-three button:disabled {
+  background-color: hsl(0, 0%, 10%);
+  color: hsl(120, 100%, 25%);
+  cursor: not-allowed;
+}
+
+.three-by-three button:not(:disabled):active {
+  margin-top: 5px;
+  border-bottom: 1px solid hsl(0, 0%, 0%);
+}
+
+#keypad button:last-of-type {
   grid-column: 3 / 3;
 }
 
-#result {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-body {
-  position: absolute;
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -45%);
-}
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+.hidden {
+  display: none;
+}
+
+#keypad button > span:last-of-type {
+  position: relative;
+  width: 3ch;
+  text-align: right;
+}
+
+
+#keypad button > span:last-of-type::before {
+  content: " 88";
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: rgba(0, 0, 0, 0.25);
+  z-index: -1;
+}
+
+#keypad button:nth-last-of-type(1), #keypad button:nth-last-of-type(2) {
+  font-family: 'Seven Segment', sans-serif;
+}
+
+#keypad button span:first-of-type {
+  font-family: 'Seven Segment', sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#display > div {
+  font-family: 'Seven Segment', sans-serif;
+  background: #fb7c00;
+  color: black;
+  font-size: 4rem;
+  text-align: right;
+  margin: 1rem;
+  padding: 1rem;
+  height: 3ch;
+}
+
+#display > div:first-of-type {
+  margin-bottom: 0;
+}
+#display > div:last-of-type {
+  margin-top: 0;
+}
+
+#display {
+  padding: 1rem;
+  background-color: hsl(198, 94%, 14%)
+}
