@@ -152,6 +152,13 @@ h1 {
 
 #keypad button span:first-of-type {
   font-family: 'Seven Segment', sans-serif;
+  color: lime
+}
+#keypad button:disabled span:first-of-type {
+  color: hsl(120, 100%, 25%);
+}
+
+#keypad .fade-operator > span:first-of-type {
   color: rgba(0, 0, 0, 0.5);
 }
 
