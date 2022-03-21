@@ -90,7 +90,7 @@ self.addEventListener('message', ({ data: { difficulty, values } }) => {
 	if (seenDifficulties.size !== 9) return self.postMessage({ reshuffle: true });
 
 	const counts = allOptions.reduce((counts, { value, option }) => ({ ...counts, [value]: [...(counts[value] ?? []), option] }), {})
-	const [ value, options ] = Object.entries(counts).reduce((least, [value, options]) => {
+	const [value, options] = Object.entries(counts).reduce((least, [value, options]) => {
 		if (least[1].length < options.length) return least
 		return [value, options]
 	})

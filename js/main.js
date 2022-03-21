@@ -103,7 +103,7 @@ function startGame(difficulty) {
 	}
 
 	function endGame(won) {
-		if (won){
+		if (won) {
 			hint(`You won in ${((Date.now() - started) / 1000).toFixed(2)}s, with ${pressed.length} presses!\n\n${generatePressedText(pressed)}`)
 		} else {
 			hint(`You could not calculate the number in ${pressed.length} presses...`)
@@ -121,7 +121,7 @@ function startGame(difficulty) {
 
 		currentElement.textContent = '';
 		let buttonValues = [];
-		while(true){
+		while (true) {
 			buttonValues = new Array(9).fill().map(() => generateRandomOperatorAndNumber(random))
 			if (new Set(buttonValues.map(pair => pair.join(' '))).size === 9 && buttonValues.every(([_, number]) => number)) break
 		}
