@@ -1,4 +1,8 @@
-# Novemator
+# [Novemator](https://rascaltwo.github.io/Novemator/)
+
+[![pages-build-deployment](https://github.com/RascalTwo/Novemator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://rascaltwo.github.io/Novemator/)
+
+![screenshot of game](https://user-images.githubusercontent.com/9403665/159194192-c1aee587-496e-4e31-b64f-e6a7e26bf379.png)
 
 > A new top-of-the-line security keypad has been developed to keep out anyone without sufficient mathematical skills, with daily reshuffling they're impenetrable!
 
