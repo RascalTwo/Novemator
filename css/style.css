@@ -36,14 +36,33 @@ html {
 
 body {
   color: var(--color);
+  max-width: 90vw;
+  margin: auto;
 }
 
 main {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 95%;
+  transform: translate(-50%, -95%);
   margin: auto;
+}
+
+header {
+  position: relative;
+  z-index: 5;
+}
+
+header * {
+  text-shadow: white 0 -0.25rem 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+#hint {
+  font-size: 1.5rem;
 }
 
 .three-by-three {
@@ -69,6 +88,18 @@ main {
   background-color: hsl(0, 0%, 30%);
   border-bottom: 7.5px solid hsl(0, 0%, 15%);
   width: 4ch;
+}
+
+@media (max-width: 700px) {
+  .three-by-three button {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .three-by-three button {
+    font-size: 2.33rem;
+  }
 }
 
 .three-by-three button:not(:disabled):is(:hover, :focus) {
