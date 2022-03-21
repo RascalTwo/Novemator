@@ -130,8 +130,11 @@ function startGame(difficulty) {
 			button.setAttribute('aria-label', button.dataset.number)
 		});
 		buttonPool.forEach(renderButton);
+		buttonPool.forEach((button) => button.style.display = 'none')
+		document.body.offsetLeft
 		const animOffsets = fisherYates(new Array(9).fill().map((_, i) => i));
-		buttonPool.forEach((button) => button.style.setProperty('--anim-delay', animOffsets.pop() * 100))
+		buttonPool.forEach((button) => button.style.setProperty('--anim-delay', animOffsets.pop() * 750 + 'ms'))
+		buttonPool.forEach((button) => button.style.display = 'flex')
 		buttons.forEach(button => button.disabled = 'true');
 		targetElement.textContent = 'Calculating...'
 		worker = new Worker('js/worker.js');
@@ -142,7 +145,6 @@ function startGame(difficulty) {
 		worker.addEventListener('message', ({ data: { value, options, reshuffle } }) => {
 			if (reshuffle) return shuffle();
 			target = [value, options]
-			console.log({ value, options })
 			targetElement.textContent = target[0];
 			hint('Choose the number to start off your calculations with!')
 			buttons.forEach(button => button.removeAttribute('disabled'));

@@ -146,6 +146,15 @@ h1 {
   text-align: right;
 }
 
+#keypad button {
+  animation: var(--anim-delay) fade-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 
 #keypad button > span:last-of-type::before {
   content: " 88";
