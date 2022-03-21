@@ -108,6 +108,7 @@ function startGame(difficulty) {
 	}
 
 	function shuffle() {
+		hint(``);
 		pressed = []
 		nth++;
 		started = Date.now();
