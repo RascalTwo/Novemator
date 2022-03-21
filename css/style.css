@@ -65,6 +65,16 @@ h1 {
   font-size: 1.5rem;
 }
 
+#emoji-results {
+  background: black;
+  width: max-content;
+  text-align: center;
+  margin: auto;
+  padding: 0.75rem;
+  text-shadow: none;
+  border-radius: 1rem;
+}
+
 .three-by-three {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

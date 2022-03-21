@@ -102,8 +102,13 @@ function startGame(difficulty) {
 		button.classList.toggle('fade-operator', pressed.length === 0)
 	}
 
-	function endGame() {
-		hint(`You won in ${((Date.now() - started) / 1000).toFixed(2)}s, with ${pressed.length} presses!`)
+	function endGame(won) {
+		if (won){
+			hint(`You won in ${((Date.now() - started) / 1000).toFixed(2)}s, with ${pressed.length} presses!\n\n${generatePressedText(pressed)}`)
+		} else {
+			hint(`You could not calculate the number in ${pressed.length} presses...`)
+		}
+
 		buttonPool.forEach(button => button.disabled = 'true');
 	}
 
@@ -147,7 +152,7 @@ function startGame(difficulty) {
 	shuffleButton.addEventListener('click', shuffle);
 
 	function hint(message) {
-		hintElement.textContent = message ?? 'Choose an operator and number combination to get your value to the target!';
+		hintElement.innerHTML = message ?? 'Choose an operator and number combination to get your value to the target!';
 	}
 
 	function handlePress({ currentTarget }) {
@@ -170,8 +175,8 @@ function startGame(difficulty) {
 			}
 			currentElement.textContent = newValue
 		}
-		console.log(generatePressedText(pressed));
-		if (currentElement.textContent == targetElement.textContent) return endGame()
+		if (pressed.length === difficulty) endGame(false)
+		if (currentElement.textContent == targetElement.textContent) return endGame(true)
 		if (pressed.length === 9) return hint('You can press the Clear button at any time to reset')
 	}
 	buttonPool.forEach(button => button.addEventListener('click', handlePress));
@@ -185,7 +190,6 @@ function startGame(difficulty) {
 }
 
 function generatePressedText(pressed) {
-	/*
 	const digits = {
 		'0': '1️⃣',
 		'1': '2️⃣',
@@ -196,23 +200,17 @@ function generatePressedText(pressed) {
 		'6': '7️⃣',
 		'7': '8️⃣',
 		'8': '9️⃣'
-	}*/
-	const digits = {
-		'0': '1',
-		'1': '2',
-		'2': '3',
-		'3': '4',
-		'4': '5',
-		'5': '6',
-		'6': '7',
-		'7': '8',
-		'8': '9'
 	}
-	const c = new Array(9).fill().map((_, i) => digits[pressed.indexOf(buttonPool[i])] ?? '_').reverse()
+	const c = new Array(9).fill().map((_, i) => digits[pressed.indexOf(buttonPool[i])] ?? '⬛').reverse()
 
 	return `
-${c.pop()} ${c.pop()} ${c.pop()}
-${c.pop()} ${c.pop()} ${c.pop()}
-${c.pop()} ${c.pop()} ${c.pop()}
+<br/>
+<div id="emoji-results">
+	${c.pop()}${c.pop()}${c.pop()}
+	<br/>
+	${c.pop()}${c.pop()}${c.pop()}
+	<br/>
+	${c.pop()}${c.pop()}${c.pop()}
+</div>
 	`.trim()
 }
